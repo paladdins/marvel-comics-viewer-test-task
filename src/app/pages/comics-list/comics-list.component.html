@@ -1,0 +1,12 @@
+<div class="inner">
+  <h3>Лист комиксов</h3>
+  <div *ngIf="dataSource"
+    class="comics-list">
+    <a *ngFor="let comics of dataSource"
+      [routerLink]="['/comics-details/' + comics.id]">
+      <mat-card class="comics">
+        <h2>{{comics.title}}</h2>
+      </mat-card>
+    </a>
+  </div>
+</div>

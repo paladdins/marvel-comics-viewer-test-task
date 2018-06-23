@@ -1,0 +1,22 @@
+<div *ngIf="dataSource"
+  class="inner">
+  <h3>Детали комикса</h3>
+  <h3>{{dataSource.title}}</h3>
+
+  <p *ngIf="!isFavorite">
+    <button (click)="addComicsToFav(dataSource)">
+      Добавить в избранное
+    </button>
+  </p>
+
+  <div class="heroes-list">
+    <a *ngFor="let hero of dataSource.heroes"
+      [routerLink]="['/heroes-details/' + hero.id]">
+      <mat-card>
+        <div class="hero">
+          {{hero.name}}
+        </div>
+      </mat-card>
+    </a>
+  </div>
+</div>

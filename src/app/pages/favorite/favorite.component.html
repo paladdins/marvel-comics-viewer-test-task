@@ -1,0 +1,31 @@
+<div *ngIf="dataSource"
+  class="inner">
+
+  <div class="types">
+    <a (click)="chooseComics()">Избранные Комиксы</a>
+    <a (click)="chooseHeroes()">Избранные Герои</a>
+  </div>
+
+  <div *ngIf="dataSource[toggleComicsHeroes]; else noFavorites"
+    class="data">
+    <p *ngFor="let item of dataSource[toggleComicsHeroes]; let i = index">
+      <a [routerLink]="['/' + toggleComicsHeroes + '-details/' +item.id]">
+        <span *ngIf="toggleComicsHeroes === 'comics'; else heroName">
+          {{item.title}}
+        </span>
+        <ng-template #heroName>
+          <span>{{item.name}}</span>
+        </ng-template>
+      </a>
+      <button (click)="removeFav(toggleComicsHeroes, i)">
+        Удалить из избранного
+      </button>
+
+
+    </p>
+  </div>
+
+  <ng-template #noFavorites>
+    There is no any {{toggleComicsHeroes}} yet
+  </ng-template>
+</div>
